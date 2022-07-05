@@ -22,6 +22,6 @@ describe('ULMARK', function () {
     balance = await ulMark.balanceOf(recepient);
     expect(balance).to.equal(1);
 
-    expect(await ulMark.isContentOwned(metaDataUri)).to.equal(false);
+    expect(await ulMark.isContentOwned(metaDataUri)).to.equal(true);
   });
 });

@@ -1,15 +1,30 @@
-<mat-drawer-container class="container" autosize>
-  <mat-drawer #drawer class="sidenav" mode="side">
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    aria-label="Icon-button with menu icon to open menu sidenav"
+    (click)="sideNavOpen = !sideNavOpen; drawer.toggle()"
+    class="sidenav-toggle"
+  >
+    <mat-icon *ngIf="!sideNavOpen">menu</mat-icon>
+    <mat-icon *ngIf="sideNavOpen">close</mat-icon>
+  </button>
+  <mat-icon class="ul-logo" svgIcon="ul_solutions_logo"></mat-icon>
+</mat-toolbar>
+<mat-sidenav-container class="container">
+  <mat-sidenav #drawer class="sidenav" mode="side">
     <p>Auto-resizing sidenav</p>
-  </mat-drawer>
+  </mat-sidenav>
 
   <div class="sidenav-content">
     <mat-card>
-      <button type="button" mat-button (click)="drawer.toggle()">
+      <button
+        type="button"
+        mat-button
+        (click)="sideNavOpen = !sideNavOpen; drawer.toggle()"
+      >
         Toggle sidenav
       </button>
     </mat-card>
     <router-outlet></router-outlet>
   </div>
-
-</mat-drawer-container>
+</mat-sidenav-container>
