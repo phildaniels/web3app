@@ -1,3 +1,112 @@
+$ul-text-primary: #2a313a;
+$ul-text-secondary: #686e73;
+$ul-text-white: #ffffff;
+
+$ul-red-50: #f7e4e6;
+$ul-red-100: #ecbcc2;
+$ul-red-200: #e09099;
+$ul-red-300: #d36370;
+$ul-red-400: #c94151;
+$ul-red-500: #c02032;
+$ul-red-600: #aa131f;
+$ul-red-700: #892433;
+$ul-red-800: #761b27;
+$ul-red-900: #661a29;
+$ul-red-A100: #ffcacc;
+$ul-red-A200: #ff979b;
+$ul-red-A400: #ff646a;
+$ul-red-A700: #ff4b51;
+
+$ul-neutral-50: #ffffff;
+$ul-neutral-100: #f3f3f4;
+$ul-neutral-200: #e6e7e8;
+$ul-neutral-300: #d4d5d6;
+$ul-neutral-400: #c1c3c6;
+$ul-neutral-500: #686e73;
+$ul-neutral-600: #555b60;
+$ul-neutral-700: #3a3f43;
+$ul-neutral-800: #2a313a;
+$ul-neutral-900: #000000;
+$ul-neutral-A100: #a1d2fa;
+$ul-neutral-A200: #70bbf7;
+$ul-neutral-A400: #36a5ff;
+$ul-neutral-A700: #1c9aff;
+
+$ul-action-50: #e5eef9;
+$ul-action-100: #bfd5ef;
+$ul-action-200: #94bae5;
+$ul-action-300: #699edb;
+$ul-action-400: #4889d3;
+$ul-action-500: #2874cb;
+$ul-action-600: #1e61be;
+$ul-action-700: #00518a;
+$ul-action-800: #004077;
+$ul-action-900: #0b3c61;
+$ul-action-A100: #ffffff;
+$ul-action-A200: #ebf4ff;
+$ul-action-A400: #dae5ff;
+$ul-action-A700: #a7c1ff;
+
+$ul-success-50: #e7f0e6;
+$ul-success-100: #c2dac0;
+$ul-success-200: #9ac297;
+$ul-success-300: #72aa6d;
+$ul-success-400: #53974d;
+$ul-success-500: #5dc655;
+$ul-success-600: #35852e;
+$ul-success-700: #307d29;
+$ul-success-800: #287223;
+$ul-success-900: #22681d;
+$ul-success-A100: #e7ffe6;
+$ul-success-A200: #b6ffb3;
+$ul-success-A400: #85ff80;
+$ul-success-A700: #6dff67;
+
+$ul-warn-50: #fff3e0;
+$ul-warn-100: #ffe0b3;
+$ul-warn-200: #ffcc80;
+$ul-warn-300: #ffb74d;
+$ul-warn-400: #ffa726;
+$ul-warn-500: #ff9800;
+$ul-warn-600: #ff9000;
+$ul-warn-700: #ff8500;
+$ul-warn-800: #ff6a00;
+$ul-warn-900: #ff5700;
+$ul-warn-A100: #ffffff;
+$ul-warn-A200: #fff7f2;
+$ul-warn-A400: #ffd6bf;
+$ul-warn-A700: #ffc5a6;
+
+$ul-error-50: #fbe6e7;
+$ul-error-100: #f6c0c2;
+$ul-error-200: #f09699;
+$ul-error-300: #ea6c70;
+$ul-error-400: #e64d52;
+$ul-error-500: #e12d33;
+$ul-error-600: #d92227;
+$ul-error-700: #d51c20;
+$ul-error-800: #be1113;
+$ul-error-900: #990506;
+$ul-error-A100: #fffbfb;
+$ul-error-A200: #ffc8c9;
+$ul-error-A400: #ff9596;
+$ul-error-A700: #ff7b7d;
+
+$ul-progress-50: #e4eff6;
+$ul-progress-100: #bdd7e9;
+$ul-progress-200: #91bdda;
+$ul-progress-300: #64a2cb;
+$ul-progress-400: #438ebf;
+$ul-progress-500: #227ab4;
+$ul-progress-600: #1e72ad;
+$ul-progress-700: #1967a4;
+$ul-progress-800: #145d9c;
+$ul-progress-900: #0c4a8c;
+$ul-progress-A100: #bcd9ff;
+$ul-progress-A200: #89bdff;
+$ul-progress-A400: #56a0ff;
+$ul-progress-A700: #3c92ff;
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use "@angular/material" as mat;
@@ -11,11 +120,241 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$web3app-primary: mat.define-palette(mat.$red-palette);
-$web3app-accent: mat.define-palette(mat.$blue-palette, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
-$web3app-warn: mat.define-palette(mat.$red-palette);
+$mat-ul-red: (
+  50: $ul-red-50,
+  100: $ul-red-100,
+  200: $ul-red-200,
+  300: $ul-red-300,
+  400: $ul-red-400,
+  500: $ul-red-500,
+  600: $ul-red-600,
+  700: $ul-red-700,
+  800: $ul-red-800,
+  900: $ul-red-900,
+  A100: $ul-red-A100,
+  A200: $ul-red-A200,
+  A400: $ul-red-A400,
+  A700: $ul-red-A700,
+  contrast: (
+    50: $ul-text-primary,
+    100: $ul-text-primary,
+    200: $ul-text-primary,
+    300: $ul-text-white,
+    400: $ul-text-white,
+    500: $ul-text-white,
+    600: $ul-text-white,
+    700: $ul-text-white,
+    800: $ul-text-white,
+    900: $ul-text-white,
+    A100: $ul-text-primary,
+    A200: $ul-text-primary,
+    A400: $ul-text-primary,
+    A700: $ul-text-primary,
+  ),
+);
+
+$mat-ul-neutral: (
+  50: $ul-neutral-50,
+  100: $ul-neutral-100,
+  200: $ul-neutral-200,
+  300: $ul-neutral-300,
+  400: $ul-neutral-400,
+  500: $ul-neutral-500,
+  600: $ul-neutral-600,
+  700: $ul-neutral-700,
+  800: $ul-neutral-800,
+  900: $ul-neutral-900,
+  A100: $ul-neutral-A100,
+  A200: $ul-neutral-A200,
+  A400: $ul-neutral-A400,
+  A700: $ul-neutral-A700,
+  contrast: (
+    50: $ul-text-primary,
+    100: $ul-text-primary,
+    200: $ul-text-primary,
+    300: $ul-text-primary,
+    400: $ul-text-primary,
+    500: $ul-text-primary,
+    600: $ul-text-white,
+    700: $ul-text-white,
+    800: $ul-text-white,
+    900: $ul-text-white,
+    A100: $ul-text-primary,
+    A200: $ul-text-primary,
+    A400: $ul-text-white,
+    A700: $ul-text-white,
+  ),
+);
+
+$mat-ul-action: (
+  50: $ul-action-50,
+  100: $ul-action-100,
+  200: $ul-action-200,
+  300: $ul-action-300,
+  400: $ul-action-400,
+  500: $ul-action-500,
+  600: $ul-action-600,
+  700: $ul-action-700,
+  800: $ul-action-800,
+  900: $ul-action-900,
+  A100: $ul-action-A100,
+  A200: $ul-action-A200,
+  A400: $ul-action-A400,
+  A700: $ul-action-A700,
+  contrast: (
+    50: $ul-text-primary,
+    100: $ul-text-primary,
+    200: $ul-text-primary,
+    300: $ul-text-primary,
+    400: $ul-text-primary,
+    500: $ul-text-primary,
+    600: $ul-text-white,
+    700: $ul-text-white,
+    800: $ul-text-white,
+    900: $ul-text-white,
+    A100: $ul-text-primary,
+    A200: $ul-text-primary,
+    A400: $ul-text-primary,
+    A700: $ul-text-primary,
+  ),
+);
+
+$mat-ul-success: (
+  50: $ul-success-50,
+  100: $ul-success-100,
+  200: $ul-success-200,
+  300: $ul-success-300,
+  400: $ul-success-400,
+  500: $ul-success-500,
+  600: $ul-success-600,
+  700: $ul-success-700,
+  800: $ul-success-800,
+  900: $ul-success-900,
+  A100: $ul-success-A100,
+  A200: $ul-success-A200,
+  A400: $ul-success-A400,
+  A700: $ul-success-A700,
+  contrast: (
+    50: $ul-text-primary,
+    100: $ul-text-primary,
+    200: $ul-text-primary,
+    300: $ul-text-primary,
+    400: $ul-text-white,
+    500: $ul-text-white,
+    600: $ul-text-white,
+    700: $ul-text-white,
+    800: $ul-text-white,
+    900: $ul-text-white,
+    A100: $ul-text-primary,
+    A200: $ul-text-primary,
+    A400: $ul-text-primary,
+    A700: $ul-text-primary,
+  ),
+);
+
+$mat-ul-warn: (
+  50: $ul-warn-50,
+  100: $ul-warn-100,
+  200: $ul-warn-200,
+  300: $ul-warn-300,
+  400: $ul-warn-400,
+  500: $ul-warn-500,
+  600: $ul-warn-600,
+  700: $ul-warn-700,
+  800: $ul-warn-800,
+  900: $ul-warn-900,
+  A100: $ul-warn-A100,
+  A200: $ul-warn-A200,
+  A400: $ul-warn-A400,
+  A700: $ul-warn-A700,
+  contrast: (
+    50: $ul-text-primary,
+    100: $ul-text-primary,
+    200: $ul-text-primary,
+    300: $ul-text-primary,
+    400: $ul-text-primary,
+    500: $ul-text-primary,
+    600: $ul-text-primary,
+    700: $ul-text-primary,
+    800: $ul-text-primary,
+    900: $ul-text-primary,
+    A100: $ul-text-primary,
+    A200: $ul-text-primary,
+    A400: $ul-text-primary,
+    A700: $ul-text-primary,
+  ),
+);
+
+$mat-ul-error: (
+  50: $ul-error-50,
+  100: $ul-error-100,
+  200: $ul-error-200,
+  300: $ul-error-300,
+  400: $ul-error-400,
+  500: $ul-error-500,
+  600: $ul-error-600,
+  700: $ul-error-700,
+  800: $ul-error-800,
+  900: $ul-error-900,
+  A100: $ul-error-A100,
+  A200: $ul-error-A200,
+  A400: $ul-error-A400,
+  A700: $ul-error-A700,
+  contrast: (
+    50: $ul-text-primary,
+    100: $ul-text-primary,
+    200: $ul-text-primary,
+    300: $ul-text-primary,
+    400: $ul-text-white,
+    500: $ul-text-white,
+    600: $ul-text-white,
+    700: $ul-text-white,
+    800: $ul-text-white,
+    900: $ul-text-white,
+    A100: $ul-text-primary,
+    A200: $ul-text-primary,
+    A400: $ul-text-primary,
+    A700: $ul-text-primary,
+  ),
+);
+
+$mat-ul-progress: (
+  50: $ul-progress-50,
+  100: $ul-progress-100,
+  200: $ul-progress-200,
+  300: $ul-progress-300,
+  400: $ul-progress-400,
+  500: $ul-progress-500,
+  600: $ul-progress-600,
+  700: $ul-progress-700,
+  800: $ul-progress-800,
+  900: $ul-progress-900,
+  A100: $ul-progress-A100,
+  A200: $ul-progress-A200,
+  A400: $ul-progress-A400,
+  A700: $ul-progress-A700,
+  contrast: (
+    50: $ul-text-primary,
+    100: $ul-text-primary,
+    200: $ul-text-primary,
+    300: $ul-text-primary,
+    400: $ul-text-white,
+    500: $ul-text-white,
+    600: $ul-text-white,
+    700: $ul-text-white,
+    800: $ul-text-white,
+    900: $ul-text-white,
+    A100: $ul-text-primary,
+    A200: $ul-text-primary,
+    A400: $ul-text-primary,
+    A700: $ul-text-primary,
+  ),
+);
+
+$web3app-primary: mat.define-palette($mat-ul-red, 500);
+$web3app-accent: mat.define-palette($mat-ul-action);
+$web3app-warn: mat.define-palette($mat-ul-error);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -29,12 +368,11 @@ $web3app-theme: mat.define-dark-theme(
   )
 );
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include mat.all-component-themes($web3app-theme);
 
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 html,
 body {
@@ -43,4 +381,8 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.full-width {
+  width: 100%;
 }

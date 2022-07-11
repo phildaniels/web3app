@@ -1,0 +1,15 @@
+https://docs.microsoft.com/en-us/azure/cosmos-db/linux-emulator?tabs=mongodb-api%2Cssl-netstd21
+
+ipaddr="`ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}' | head -n 1`"
+docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator\
+
+docker run -d --name=cosmosdb --restart unless-stopped --publish 8081:8081 --publish 10251:10251 --publish 10252:10252 --publish 10253:10253 --publish 10254:10254 --publish 10255:10255 --memory 2g --cpus 2.0 --env AZURE_COSMOS_EMULATOR_PARTITION_COUNT=5 --env AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE=true --env AZURE_COSMOS_EMULATOR_IP_ADDRESS_OVERRIDE=$ipaddr --env ENABLE_MONGODB_ENDPOINT=4.0 mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator /usr/local/bin/cosmos/start.sh /EnableMongoDbEndpoint=4.0 /MongoPort=10255 /Key:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+
+// install this cert
+https://$ipaddr:8081/_explorer/emulator.pem
+
+
+docker stop $(docker ps -a -q)
+docker rm $ (docker ps -a -q)
+
+ Microsoft.Azure.Cosmos.Emulator.exe /EnableMongoDbEndpoint
