@@ -1,0 +1,22 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prestart": "npm run build",
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "ajv": "^8.11.0",
+    "mongodb": "^4.7.0",
+    "mongoose": "^6.4.3"
+  },
+  "devDependencies": {
+    "@azure/functions": "^3.0.0",
+    "@types/mongoose": "^5.11.97",
+    "typescript": "^4.0.0"
+  }
+}

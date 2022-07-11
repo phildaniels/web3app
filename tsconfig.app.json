@@ -8,6 +8,7 @@
     "forceConsistentCasingInFileNames": false,
     "esModuleInterop": false,
     "module": "es2020",
+    "experimentalDecorators": true,
   },
   "files": [
     "src/main.ts",
