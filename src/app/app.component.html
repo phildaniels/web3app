@@ -8,20 +8,40 @@
     <mat-icon *ngIf="!sideNavOpen">menu</mat-icon>
     <mat-icon *ngIf="sideNavOpen">close</mat-icon>
   </button>
-  <mat-icon class="ul-logo" svgIcon="ul_solutions_logo"></mat-icon>
+  <mat-icon
+    class="ul-logo cursor-pointer"
+    svgIcon="ul_solutions_logo"
+    [routerLink]="['/home']"
+  ></mat-icon>
 </mat-toolbar>
+<mat-progress-bar
+  mode="indeterminate"
+  color="accent"
+  *ngIf="loadingService.isLoading"
+></mat-progress-bar>
 <mat-sidenav-container class="material-sidenav-container">
-  <mat-sidenav #drawer class="sidenav" mode="side">
-    <mat-nav-list class="pl-0 pr-0">
+  <mat-sidenav #drawer class="pl-0 pr-0" mode="side">
+    <mat-nav-list>
       <mat-list-item class="w-full">
-        <mat-icon>home</mat-icon>
+        <mat-icon class="mr-3">home</mat-icon>
         <a [routerLink]="['/home']">Home</a>
+      </mat-list-item>
+      <mat-list-item class="w-full">
+        <mat-icon class="mr-3">shopping_cart</mat-icon>
+        <a [routerLink]="['/place-order']">Place Order</a>
+      </mat-list-item>
+      <mat-list-item class="w-full">
+        <mat-icon class="mr-3">attach_money</mat-icon>
+        <a [routerLink]="['/pay']">Pay for Services</a>
+      </mat-list-item>
+      <mat-list-item class="w-full">
+        <mat-icon class="mr-3">inventory</mat-icon>
+        <a [routerLink]="['/orders']">orders</a>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
 
-  <div class="sidenav-content">
-    <div class="text-3xl font-bold underline">Hello world!</div>
+  <div class="pt-5">
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>

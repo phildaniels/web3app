@@ -2,14 +2,14 @@ import { AzureFunction, Context, HttpRequest } from '@azure/functions';
 import { MongooseClient } from '../clients/mongoose.client';
 import {
   badRequestResult,
-  createdResult,
   internalServerErrorResult,
+  okResult,
 } from '../data/api-responses.models';
 import {
-  OrderPartial,
-  OrderModel,
-  orderSchemaValidator,
+  CompleteOrderPartial,
+  completeOrderSchemaValidator,
   Order,
+  OrderModel,
 } from '../data/order';
 
 const httpTrigger: AzureFunction = async function (
@@ -17,25 +17,25 @@ const httpTrigger: AzureFunction = async function (
   req: HttpRequest
 ): Promise<void> {
   try {
-    if (!orderSchemaValidator(req.body)) {
+    if (!completeOrderSchemaValidator(req.body)) {
       context.res = badRequestResult(
-        'Invalid order',
-        orderSchemaValidator.errors?.map((error) => error.message ?? '') ?? []
+        'Invalid order completion',
+        completeOrderSchemaValidator.errors?.map(
+          (error) => error.message ?? ''
+        ) ?? []
       );
       return;
     }
-    const orderBody = req.body as OrderPartial;
-    const orderBodyWithAuditInfo = {
-      ...orderBody,
-      createdOn: new Date(),
-      updatedOn: new Date(),
-      orderCompleted: false,
-      orderPrice: null,
-    } as Order;
+    const orderId = context.bindingData.id;
+    const orderCompletedBody = req.body as CompleteOrderPartial;
+    const updateObject = { ...orderCompletedBody, updatedDate: new Date() };
     const mongooseClient = await MongooseClient.createClassAsync();
-    const order = new OrderModel(orderBodyWithAuditInfo);
-    await mongooseClient.createAsync(order);
-    context.res = createdResult('Order created', order);
+    await mongooseClient.updateAsync<Order>(
+      OrderModel,
+      { _id: orderId },
+      updateObject
+    );
+    context.res = okResult('Order updated');
   } catch (e) {
     context.log.error('Orders function failed with error', e);
     context.res = internalServerErrorResult('Something went wrong');

@@ -6,7 +6,6 @@ import {
   HydratedDocument,
   ObjectId,
 } from 'mongoose';
-import { Order } from '../data/order';
 
 export class MongooseClient {
   private initialized: boolean = false;
