@@ -1,0 +1,15 @@
+{
+  "bindings": [
+    {
+      "type": "cosmosDBTrigger",
+      "name": "documents",
+      "direction": "in",
+      "leaseCollectionName": "leases",
+      "connectionStringSetting": "COSMOSDB_CONNECTIONSTRING",
+      "databaseName": "orders",
+      "collectionName": "Orders",
+      "createLeaseCollectionIfNotExists": false
+    }
+  ],
+  "scriptFile": "../dist/OrdersUpdatedTrigger/index.js"
+}

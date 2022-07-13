@@ -5,15 +5,15 @@ import {
   noContentResult,
   okResult,
 } from '../data/api-responses.models';
-import { IOrder, Order } from '../data/order';
+import { OrderModel, Order } from '../data/order';
 
 const httpTrigger: AzureFunction = async function (
   context: Context,
-  req: HttpRequest
+  _: HttpRequest
 ): Promise<void> {
   try {
     const mongooseClient = await MongooseClient.createClassAsync();
-    const orders = await mongooseClient.getAync<IOrder>(Order);
+    const orders = await mongooseClient.getAync<Order>(OrderModel);
     if (orders?.length != null && orders.length > 0) {
       context.res = okResult('Success in retrieving orders', orders);
       return;

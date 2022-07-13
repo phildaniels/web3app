@@ -5,7 +5,7 @@ import {
   notFoundResult,
   okResult,
 } from '../data/api-responses.models';
-import { IOrder, Order } from '../data/order';
+import { OrderPartial, OrderModel } from '../data/order';
 
 const httpTrigger: AzureFunction = async function (
   context: Context,
@@ -18,7 +18,9 @@ const httpTrigger: AzureFunction = async function (
       context.res = notFoundResult('Order id is required');
       return;
     }
-    const order = await mongooseClient.getAync<IOrder>(Order, { _id: orderId });
+    const order = await mongooseClient.getAync<OrderPartial>(OrderModel, {
+      _id: orderId,
+    });
     if (order != null) {
       context.res = okResult(
         `Success in retrieving order with id ${orderId}`,

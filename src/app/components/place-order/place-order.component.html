@@ -1,0 +1,73 @@
+<form [formGroup]="placeOrderForm" (ngSubmit)="onSubmit()">
+  <mat-card class="mx-auto container w-1/3">
+    <div *ngIf="error !== ''" class="text-red500">
+      {{ error }}
+    </div>
+    <mat-card-header>
+      <mat-card-title>
+        <h1>Place Order</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="w-full">
+        <input
+          matInput
+          placeholder="Client Unique ID"
+          formControlName="clientUniqueId"
+        />
+        <mat-error *ngIf="placeOrderForm.controls.clientUniqueId.errors">
+          {{ getErrorMessage(placeOrderForm.controls.clientUniqueId) }}
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <br />
+      <mat-form-field class="w-full">
+        <input
+          matInput
+          placeholder="Title Of Order"
+          formControlName="orderName"
+        />
+        <mat-error *ngIf="placeOrderForm.controls.orderName.errors">
+          {{ getErrorMessage(placeOrderForm.controls.orderName) }}
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <br />
+      <mat-form-field class="w-full">
+        <textarea
+          matInput
+          placeholder="Description of Services Requested"
+          formControlName="orderDescription"
+        ></textarea>
+        <mat-error *ngIf="placeOrderForm.controls.orderDescription.errors">
+          {{ getErrorMessage(placeOrderForm.controls.orderDescription) }}
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <br />
+      <button type="button" mat-raised-button (click)="fileInput.click()">
+        Add Attachements
+      </button>
+      <br />
+      <input
+        hidden
+        (change)="onFileSelected()"
+        #fileInput
+        type="file"
+        id="file"
+        multiple
+      />
+      <br />
+      <div>
+        <strong>Attachements: </strong>
+        <div *ngFor="let fileName of fileNames">"{{ fileName }}"</div>
+        <br />
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button [disabled]="!placeOrderForm.valid">
+        Submit
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>
