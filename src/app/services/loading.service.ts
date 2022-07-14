@@ -13,5 +13,8 @@ export class LoadingService {
 
   public set isLoading(value: boolean) {
     this.loading = value;
+    if (value === true) {
+      setTimeout(() => (this.loading = false), 30000);
+    }
   }
 }
