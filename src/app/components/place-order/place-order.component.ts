@@ -36,11 +36,19 @@ export class PlaceOrderComponent implements OnInit, OnDestroy {
   });
   constructor(
     private apiService: ApiService,
-    private loadingService: LoadingService,
+    public loadingService: LoadingService,
     private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {}
+  async ngOnInit(): Promise<void> {
+    const ethereum = (window as any).ethereum;
+    const [account] = await ethereum.request({
+      method: 'eth_requestAccounts',
+    });
+    this.placeOrderForm.patchValue({
+      clientUniqueId: account,
+    });
+  }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());

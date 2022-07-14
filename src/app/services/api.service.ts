@@ -25,6 +25,20 @@ export class ApiService {
     );
   }
 
+  getOrderByOrderId(orderId: string): Observable<ApiResponseBody<Order>> {
+    return this.httpClient.get<ApiResponseBody<Order>>(
+      `${this.apiUrl}/orders/${orderId}`
+    );
+  }
+
+  getOrdersByClientUniqueId(
+    clientUniqueId: string
+  ): Observable<ApiResponseBody<Order[]>> {
+    return this.httpClient.get<ApiResponseBody<Order[]>>(
+      `${this.apiUrl}/client/${clientUniqueId}/orders`
+    );
+  }
+
   completeOrder(
     orderId: string,
     completionDetails: CompleteOrderPartial

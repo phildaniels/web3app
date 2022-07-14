@@ -1,1 +1,27 @@
-<p>checkout works!</p>
+<mat-card class="mx-auto container w-1/3" *ngIf="order != null">
+  <div *ngIf="error !== ''" class="text-red500">
+    {{ error }}
+  </div>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Checkout - {{ order?.orderName ?? "" }}</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container *ngIf="order?.isContentOwned ?? false">
+      <p>This content is already owned</p>
+    </ng-container>
+    <ng-container *ngIf="!(order?.isContentOwned ?? false)">
+      <p>Invoice: {{ order?.orderPrice?.toString() ?? "0.05" }} ETH</p>
+    </ng-container>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      [disabled]="order?.isContentOwned"
+      (click)="checkout()"
+    >
+      Checkout
+    </button>
+  </mat-card-actions>
+</mat-card>

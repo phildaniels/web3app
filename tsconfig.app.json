@@ -9,6 +9,7 @@
     "esModuleInterop": false,
     "module": "es2020",
     "experimentalDecorators": true,
+    "resolveJsonModule": true
   },
   "files": [
     "src/main.ts",

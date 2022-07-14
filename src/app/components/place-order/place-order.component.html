@@ -65,7 +65,10 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button [disabled]="!placeOrderForm.valid">
+      <button
+        mat-raised-button
+        [disabled]="!placeOrderForm.valid || loadingService.isLoading"
+      >
         Submit
       </button>
     </mat-card-actions>

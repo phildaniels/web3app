@@ -31,6 +31,7 @@ const httpTrigger: AzureFunction = async function (
       updatedOn: new Date(),
       orderCompleted: false,
       orderPrice: null,
+      contentIdentifier: null,
     } as Order;
     const mongooseClient = await MongooseClient.createClassAsync();
     const order = new OrderModel(orderBodyWithAuditInfo);
