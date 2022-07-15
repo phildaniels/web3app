@@ -1,0 +1,22 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "COSMOSDB_CONNECTIONSTRING": "mongodb://dev-ac-db-cosmos:fO5Ne8lfY61EpYvQ6QItcA7TjKLQT100875JfZpkdQgJ6hwzh0OvpAu55RQrllVWV3Bgp3cTiA3LFhF5vbMV0g==@dev-ac-db-cosmos.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@dev-ac-db-cosmos@",
+    "COSMOSDB_USER": "dev-ac-db-cosmos",
+    "COSMOSDB_PASSWORD": "fO5Ne8lfY61EpYvQ6QItcA7TjKLQT100875JfZpkdQgJ6hwzh0OvpAu55RQrllVWV3Bgp3cTiA3LFhF5vbMV0g==",
+    "COSMOSDB_DBNAME": "orders",
+    "COSMOSDB_HOST": "dev-ac-db-cosmos.mongo.cosmos.azure.com",
+    "COSMOSDB_PORT": "10255",
+    "EventGridEndpoint": "http://localhost:7071/runtime/webhooks/eventgrid?functionName=OrdersEventGrid",
+    "EventGridKey": "",
+    "OrdersApiBaseUrl": "http://localhost:7071/api",
+    "OrdersApiKey": "",
+    "PinataApiKey": "f37f557b6448438c48a6",
+    "PinataSecretApiKey": "0ef7daae2d4900982cae476ce8beea0f034c012678864515929cb21a3e58a001"
+  },
+  "Host": {
+    "Cors": "*"
+  }
+}
