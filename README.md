@@ -1,6 +1,6 @@
 # Running this example
 
-Run the following commands in multiple terminals. You system will need node, npx, npm, azure functions cli, and metamask installed in your browser
+Run the following commands in multiple terminals. You system will need node, npx, npm, azure functions cli, a pinata account, a mongodb api cosmos db available, and metamask installed in your browser
 
 ### Terminal 1
 
@@ -63,4 +63,27 @@ then
 
 ```
 func start
+```
+
+here is an example local.settings.json to add to your project, you will need your own with the "<...>" replaced with your values
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "COSMOSDB_CONNECTIONSTRING": "<your cosmos db connection string for mongo>",
+    "COSMOSDB_USER": "<your cosmos instance>",
+    "COSMOSDB_PASSWORD": "<your cosmos password>",
+    "COSMOSDB_DBNAME": "orders",
+    "COSMOSDB_HOST": "<your cosmos instance>.mongo.cosmos.azure.com",
+    "COSMOSDB_PORT": "10255",
+    "EventGridEndpoint": "http://localhost:7071/runtime/webhooks/eventgrid?functionName=OrdersEventGrid" // for local, otherwise a valid event grid
+		"EventGridAegSasKey": "<your key here>"
+  },
+  "Host": {
+    "Cors": "*"
+  }
+}
 ```
