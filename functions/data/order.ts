@@ -12,6 +12,10 @@ export interface CompleteOrderPartial {
   orderCompleted: boolean;
 }
 
+export interface OrderBlockChainDataPartial {
+  contentIdentifier: string | null;
+}
+
 export interface OrderPartial
   extends CreateOrderPartial,
     CompleteOrderPartial {}
@@ -21,7 +25,11 @@ export interface AuditInfo {
   updatedOn: Date;
 }
 
-export interface Order extends OrderPartial, AuditInfo {}
+export interface Order
+  extends OrderPartial,
+    CompleteOrderPartial,
+    OrderBlockChainDataPartial,
+    AuditInfo {}
 
 export const OrderModel = model<Order>(
   'Order',
@@ -31,6 +39,7 @@ export const OrderModel = model<Order>(
     orderDescription: { type: String, required: true },
     clientUniqueId: { type: String, required: true },
     orderCompleted: { type: Boolean, required: true },
+    contentIdentifier: { type: String, required: false },
     createdOn: { type: Date, required: true },
     updatedOn: { type: Date, required: true },
   })

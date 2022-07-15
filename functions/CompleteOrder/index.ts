@@ -14,7 +14,7 @@ import {
 import axios from 'axios';
 import { EventGridEvent } from '../data/event-grid-event.model';
 import { OrderCompletedEvent } from '../data/order-completed-event.model';
-import uuid from 'uuid';
+import * as uuid from 'uuid';
 
 const httpTrigger: AzureFunction = async function (
   context: Context,
@@ -55,11 +55,20 @@ const httpTrigger: AzureFunction = async function (
       dataVersion: '',
       metadataVersion: '1',
     } as EventGridEvent<OrderCompletedEvent>;
-    const response = await axios.post(
-      process.env['EventGridEndpoint'] ?? '',
-      eventGridEvent
-    );
-    if (response.status !== 202) {
+    try {
+      await axios.post(
+        process.env['EventGridEndpoint'] ?? '',
+        [eventGridEvent],
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'aeg-event-type': 'Notification',
+            'aeg-sas-key': process.env['EventGridKey'] ?? '',
+          },
+        }
+      );
+    } catch (e) {
+      context.log.error('EventGrid failed with error', e);
       await mongooseClient.updateAsync<Order>(
         OrderModel,
         { _id: orderId },

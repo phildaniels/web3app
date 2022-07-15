@@ -3,10 +3,10 @@ import { MongooseClient } from '../clients/mongoose.client';
 import {
   badRequestResult,
   internalServerErrorResult,
-  notFoundResult,
+  noContentResult,
   okResult,
 } from '../data/api-responses.models';
-import { OrderPartial, OrderModel, Order } from '../data/order';
+import { Order, OrderModel } from '../data/order';
 
 const httpTrigger: AzureFunction = async function (
   context: Context,
@@ -14,24 +14,24 @@ const httpTrigger: AzureFunction = async function (
 ): Promise<void> {
   try {
     const mongooseClient = await MongooseClient.createClassAsync();
-    const orderId = context.bindingData.id;
-    if (orderId == null) {
-      context.res = badRequestResult('Order id is required');
+    const clientUniqueId = context.bindingData.id;
+    if (clientUniqueId == null) {
+      context.res = badRequestResult('Client id is required');
       return;
     }
-    const order = await mongooseClient.getAync<Order>(OrderModel, {
-      _id: orderId,
+    const orders = await mongooseClient.getAync<Order>(OrderModel, {
+      clientUniqueId: clientUniqueId,
     });
-    if (order != null && order.length > 0) {
+    if (orders != null) {
       context.res = okResult(
-        `Success in retrieving order with id ${orderId}`,
-        order[0]
+        `Success in retrieving orders with clientId ${clientUniqueId}`,
+        orders
       );
       return;
     }
-    context.res = notFoundResult(`Order with id ${orderId} not found`);
+    context.res = noContentResult();
   } catch (e) {
-    context.log.error('GetOrderById function failed with error', e);
+    context.log.error('GetOrdersByClientId function failed with error', e);
     context.res = internalServerErrorResult('Something went wrong');
   }
 };

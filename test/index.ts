@@ -8,7 +8,7 @@ describe('ULMARK', function () {
     await ulMark.deployed();
 
     const recepient = '0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199';
-    const metaDataUri = 'cid/ulmark.pdf';
+    const metaDataUri = 'cid/ulmark.txt';
 
     let balance = await ulMark.balanceOf(recepient);
     expect(balance).to.equal(0);
