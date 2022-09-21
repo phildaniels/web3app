@@ -33,7 +33,10 @@
     </mat-card-header>
     <mat-card-content>
       <ng-container *ngIf="order.orderCompleted && order.isContentOwned">
-        <div>Content Identifier: {{ order.contentIdentifier }}</div>
+        <div>
+          Content Identifier:
+          {{ order.contentIdentifier?.substring(0, 15) + "..." }}
+        </div>
         <button
           mat-raised-button
           [disabled]="order?.contentIdentifier == null"
@@ -52,7 +55,7 @@
     <mat-card-actions>
       <button
         mat-raised-button
-        *ngIf="order.orderCompleted || order.isContentOwned"
+        *ngIf="order.orderCompleted && !order.isContentOwned"
         (click)="goToPayment(order)"
       >
         Checkout
