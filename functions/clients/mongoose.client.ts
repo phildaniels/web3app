@@ -34,6 +34,10 @@ export class MongooseClient {
     return await entity.save();
   }
 
+  async createManyAsync<T>(model: Model<T>, documentsToCreate: T[]) {
+    return await model.create(documentsToCreate);
+  }
+
   async updateAsync<T>(
     model: Model<T>,
     filter: any,
